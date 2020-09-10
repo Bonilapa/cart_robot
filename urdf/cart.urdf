@@ -1,10 +1,82 @@
 <?xml version="1.0"?>
-<robot name="cart">
-  <link name="base">
-    <visual>
-      <geometry>
-        <cylinder length="1.0" radius="0.5"/>
-      </geometry>
-    </visual>
-  </link>
+<robot name="cart"
+xmlns:xacro="http://www.ros.org/wiki/xacro">
+	
+	<material name="red">
+		<color rgba="1 0 0 1"/>
+	</material>
+	
+	<material name="green">
+		<color rgba="0 1 0 1"/>
+	</material>
+	
+	<material name="blue">
+		<color rgba="0 0 1 1"/>
+	</material>
+	
+	<material name="white">
+		<color rgba="1 1 1 1"/>
+	</material>
+		
+	<link name="shoulder">
+		<visual>
+			<geometry>
+				<box size="1 10 0.5" />
+			</geometry>
+			<origin rpy="0 0 0" xyz="3 0 0.25"/>
+			<material name="red"/>
+		</visual>
+		
+	</link>
+	
+	<link name="forarm">
+		<visual>
+			<geometry>
+				<box size="1 0.5 5" />
+			</geometry>
+			<origin rpy="0 0 0" xyz="3 0 3"/>
+			<material name="green"/>
+		</visual>
+	</link>
+	
+	
+	<joint name="elbow" type="fixed">
+		<parent link="shoulder"/>
+		<child link="forarm"/>
+		<origin xyz="0 0 0"/>
+	</joint>
+<!--	
+	<joint name="carpus" type="prismatic">
+		<parent link="forarm"/>
+		<child link="wrist"/>
+		<origin xyz="0 1 0"/>
+	</joint>
+	
+	<joint name="phalanx" type="prismatic">
+		<parent link="wrist"/>
+		<child link="finger"/>
+		<origin xyz="1 0 0"/>
+	</joint>
+	
+	<link name="wrist">
+		<visual>
+			<geometry>
+				<box size="10 1 1" />
+			</geometry>
+			<origin rpy="0 0 0" xyz="0 0 0"/>
+			<material name="green"/>
+		</visual>
+	</link>
+	
+	<link name="finger">
+		<visual>
+			<geometry>
+				<box size="0.2 0.2 0.5" />
+			</geometry>
+			<origin rpy="0 0 0" xyz="0 0 0"/>
+			<material name="white"/>
+		</visual>
+	</link>
+-->
+
 </robot>
